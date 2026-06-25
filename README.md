@@ -153,9 +153,7 @@ No installation required.
 MY project will be available at
 
 ```
-https://yourusername.github.io/CyberShield-AI/
-```
-
+https://sathavarahenil09-ux.github.io/CyberShield-AI/
 ---
 
 # 🔮 Future Scope
