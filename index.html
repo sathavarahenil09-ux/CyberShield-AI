@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CyberShield AI is a static GitHub Pages cybersecurity toolkit for password checks, phishing detection, URL analysis, hashing, MITRE ATT&CK learning, quizzes, and reports."
+    />
+    <title>CyberShield AI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="CyberShield navigation">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">CS</div>
+          <div>
+            <p class="eyebrow">CyberShield AI</p>
+            <h1>Static Defense Lab</h1>
+          </div>
+        </div>
+
+        <nav class="side-nav">
+          <a href="#dashboard" class="active">Dashboard</a>
+          <a href="#password">Password</a>
+          <a href="#url">URL Analyzer</a>
+          <a href="#phishing">Phishing</a>
+          <a href="#mitre">MITRE</a>
+          <a href="#quiz">Quiz</a>
+          <a href="#report">Report</a>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="status-dot"></span>
+          <div>
+            <strong>GitHub Pages Ready</strong>
+            <p>No backend, no localhost, no package install.</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Internship Cybersecurity Project</p>
+            <h2>Threat Command Center</h2>
+          </div>
+          <div class="topbar-actions">
+            <span class="status-pill"><span class="status-dot"></span> Static Mode</span>
+            <button class="icon-button" id="themeToggle" type="button" title="Toggle theme" aria-label="Toggle theme">☾</button>
+          </div>
+        </header>
+
+        <section class="command-band" id="dashboard" aria-label="Dashboard">
+          <div class="radar-stage" aria-hidden="true">
+            <div class="radar-grid">
+              <span class="radar-ring ring-one"></span>
+              <span class="radar-ring ring-two"></span>
+              <span class="radar-ring ring-three"></span>
+              <span class="radar-axis axis-x"></span>
+              <span class="radar-axis axis-y"></span>
+              <span class="radar-sweep"></span>
+              <span class="radar-blip blip-one"></span>
+              <span class="radar-blip blip-two"></span>
+              <span class="radar-blip blip-three"></span>
+            </div>
+          </div>
+
+          <div class="command-summary">
+            <div>
+              <p class="eyebrow">Current Case</p>
+              <h3 id="caseScoreValue">Awaiting analysis</h3>
+              <p id="caseScoreCopy">Run any tool to update the active risk signal.</p>
+            </div>
+            <div class="score-ring" id="caseScoreRing" style="--score: 0"><span>0</span></div>
+          </div>
+        </section>
+
+        <section class="metrics-grid" aria-label="Project summary">
+          <article class="metric-card tone-safe">
+            <div class="metric-icon">GP</div>
+            <p>Hosting</p>
+            <strong>Pages</strong>
+            <span>Runs from static files</span>
+          </article>
+          <article class="metric-card tone-info">
+            <div class="metric-icon">JS</div>
+            <p>Engine</p>
+            <strong>Browser</strong>
+            <span>All analysis is local</span>
+          </article>
+          <article class="metric-card tone-warn">
+            <div class="metric-icon">8</div>
+            <p>Modules</p>
+            <strong>8 Tools</strong>
+            <span>Security checks and learning</span>
+          </article>
+          <article class="metric-card tone-danger">
+            <div class="metric-icon">0</div>
+            <p>Backend</p>
+            <strong>None</strong>
+            <span>No server routes needed</span>
+          </article>
+        </section>
+
+        <section class="workspace-grid">
+          <article class="tool-panel" id="password">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Credential Security</p>
+                <h3>Password Strength Checker</h3>
+              </div>
+              <span class="panel-symbol">KEY</span>
+            </div>
+            <form id="passwordForm" class="tool-form">
+              <div class="input-row">
+                <label for="passwordInput">Password</label>
+                <div class="secret-field">
+                  <input id="passwordInput" type="password" autocomplete="new-password" placeholder="Strong passphrase" required />
+                  <button class="icon-button inline" id="togglePassword" type="button" title="Show password" aria-label="Show password">Eye</button>
+                </div>
+              </div>
+              <button class="primary-button" type="submit">Analyze</button>
+            </form>
+            <div class="score-strip"><div class="score-fill" id="passwordMeter"></div></div>
+            <div class="result-block" id="passwordResult" aria-live="polite">No password analysis yet.</div>
+          </article>
+
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Credential Utility</p>
+                <h3>Password Generator</h3>
+              </div>
+              <span class="panel-symbol">GEN</span>
+            </div>
+            <div class="tool-form">
+              <div class="input-row">
+                <label for="passwordLength">Length</label>
+                <input id="passwordLength" type="range" min="12" max="32" value="18" />
+              </div>
+              <div class="generated-box" id="generatedPassword">Click generate.</div>
+              <div class="button-row">
+                <button class="primary-button" id="generatePassword" type="button">Generate</button>
+                <button class="ghost-button" id="copyGeneratedPassword" type="button">Copy</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-panel" id="url">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Web Defense</p>
+                <h3>URL Analyzer</h3>
+              </div>
+              <span class="panel-symbol">URL</span>
+            </div>
+            <form id="urlForm" class="tool-form">
+              <div class="input-row">
+                <label for="urlInput">URL or domain</label>
+                <input id="urlInput" type="text" inputmode="url" placeholder="https://example.com/login" required />
+              </div>
+              <button class="primary-button" type="submit">Analyze URL</button>
+            </form>
+            <div class="result-block" id="urlResult" aria-live="polite">No URL analysis yet.</div>
+          </article>
+
+          <article class="tool-panel" id="hash">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Cryptography</p>
+                <h3>Hash Generator</h3>
+              </div>
+              <span class="panel-symbol">SHA</span>
+            </div>
+            <form id="hashForm" class="tool-form">
+              <div class="input-row">
+                <label for="hashInput">Text</label>
+                <textarea id="hashInput" rows="4" placeholder="Text to hash" required></textarea>
+              </div>
+              <button class="primary-button" type="submit">Generate Hashes</button>
+            </form>
+            <div class="result-block code-result" id="hashResult" aria-live="polite">SHA hashes will appear here.</div>
+          </article>
+
+          <article class="tool-panel wide-panel" id="phishing">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Email Security</p>
+                <h3>Phishing Email Detector</h3>
+              </div>
+              <span class="panel-symbol">MAIL</span>
+            </div>
+            <form id="phishingForm" class="tool-form">
+              <div class="input-row">
+                <label for="emailInput">Email content</label>
+                <textarea id="emailInput" rows="8" placeholder="Suspicious email body or headers" required></textarea>
+              </div>
+              <div class="button-row">
+                <button class="primary-button" type="submit">Detect Phishing</button>
+                <button class="ghost-button" id="loadSampleEmail" type="button">Sample</button>
+              </div>
+            </form>
+            <div class="result-block" id="phishingResult" aria-live="polite">No phishing analysis yet.</div>
+          </article>
+
+          <article class="tool-panel wide-panel" id="mitre">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Adversary Tactics</p>
+                <h3>MITRE ATT&CK Quick Reference</h3>
+              </div>
+              <span class="panel-symbol">ATT&CK</span>
+            </div>
+            <div class="segmented-control" id="mitreFilters" aria-label="MITRE tactic filters"></div>
+            <div class="mitre-grid" id="mitreList"></div>
+          </article>
+
+          <article class="tool-panel" id="quiz">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Awareness Training</p>
+                <h3>Cybersecurity Quiz</h3>
+              </div>
+              <span class="panel-symbol">QUIZ</span>
+            </div>
+            <div class="quiz-box">
+              <p id="quizProgress" class="quiz-progress">Question 1 of 5</p>
+              <h4 id="quizQuestion">Loading quiz.</h4>
+              <div class="quiz-options" id="quizOptions"></div>
+              <div class="button-row">
+                <button class="primary-button" id="quizNext" type="button">Next</button>
+                <button class="ghost-button" id="quizRestart" type="button">Restart</button>
+              </div>
+              <div class="result-block compact" id="quizResult" aria-live="polite">Choose an answer.</div>
+            </div>
+          </article>
+
+          <article class="tool-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Security Habit</p>
+                <h3>Daily Security Tip</h3>
+              </div>
+              <span class="panel-symbol">TIP</span>
+            </div>
+            <div class="tip-card" id="tipText">Loading tip.</div>
+            <div class="news-list" id="newsList"></div>
+          </article>
+
+          <article class="tool-panel wide-panel" id="report">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Submission Output</p>
+                <h3>Static Threat Report Builder</h3>
+              </div>
+              <span class="panel-symbol">DOC</span>
+            </div>
+            <form id="reportForm" class="tool-form">
+              <div class="field-grid">
+                <div class="input-row">
+                  <label for="analystName">Analyst name</label>
+                  <input id="analystName" type="text" placeholder="Your name" required />
+                </div>
+                <div class="input-row">
+                  <label for="caseTitle">Case title</label>
+                  <input id="caseTitle" type="text" placeholder="Suspicious login email" required />
+                </div>
+                <div class="input-row">
+                  <label for="targetAsset">Target asset</label>
+                  <input id="targetAsset" type="text" placeholder="Student mailbox" required />
+                </div>
+                <div class="input-row">
+                  <label for="reportUrl">Suspicious URL</label>
+                  <input id="reportUrl" type="text" inputmode="url" placeholder="https://example.com/verify" />
+                </div>
+              </div>
+              <div class="input-row">
+                <label for="reportEvidence">Email or incident evidence</label>
+                <textarea id="reportEvidence" rows="6" placeholder="Email body, message, or notes"></textarea>
+              </div>
+              <div class="button-row">
+                <button class="primary-button" type="submit">Build Report</button>
+                <button class="ghost-button" id="loadReportSample" type="button">Sample Case</button>
+                <button class="ghost-button" id="copyReport" type="button" disabled>Copy</button>
+                <button class="ghost-button" id="downloadReport" type="button" disabled>Markdown</button>
+              </div>
+            </form>
+            <div class="result-block report-output" id="reportResult" aria-live="polite">No report generated yet.</div>
+          </article>
+
+          <article class="tool-panel wide-panel" id="history">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Browser Storage</p>
+                <h3>Local Scan History</h3>
+              </div>
+              <button class="icon-button" id="clearHistory" type="button" title="Clear history" aria-label="Clear history">X</button>
+            </div>
+            <div class="history-list" id="historyList">No local scans yet.</div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
